@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
+import '../routes/app_routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MenuScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
 
 // ================== TELA ==================
 
@@ -56,7 +43,12 @@ class MenuScreen extends StatelessWidget {
                 ),
 
                 // menu icon
-                const Icon(Icons.menu, color: Colors.white),
+                InkWell(
+                onTap: () {
+                Navigator.pushReplacementNamed(context, AppRoutes.login);
+                  },//aqui depois mudar o lugar de navegação
+                  child: const Icon(Icons.menu, color: Colors.white),
+                ),
               ],
             ),
           ),
