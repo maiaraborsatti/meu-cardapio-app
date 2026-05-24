@@ -5,6 +5,8 @@ import 'routes/app_routes.dart';
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
 
+import 'screens/menu_screen.dart';
+
 void main() {
   runApp(const MeuCardapioApp());
 }
@@ -23,6 +25,8 @@ class MeuCardapioApp extends StatelessWidget {
       routes: {
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.login: (context) => const LoginScreen(),
+
+        AppRoutes.menu: (context) => const MenuScreen(),
       },
     );
   }
