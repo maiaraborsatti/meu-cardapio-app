@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
-
+import '../theme/app_icons.dart';
 
 
 // ================== TELA ==================
@@ -24,14 +24,17 @@ class MenuScreen extends StatelessWidget {
               children: [
                 // avatar + nome
                 Row(
-                  children: const [
+                  children: [
                     CircleAvatar(
                       radius: 24,
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.person, color: Colors.white),
+                      child: AppIcon(
+                        AppIcons.perfil,
+                        color: AppColors.primaryGreen,
+                      ),
                     ),
-                    SizedBox(width: 10),
-                    Text(
+                    const SizedBox(width: 10),
+                    const Text(
                       "Nome do Usuario",
                       style: TextStyle(
                         color: Colors.white,
@@ -44,10 +47,13 @@ class MenuScreen extends StatelessWidget {
 
                 // menu icon
                 InkWell(
-                onTap: () {
-                Navigator.pushReplacementNamed(context, AppRoutes.login);
-                  },//aqui depois mudar o lugar de navegação
-                  child: const Icon(Icons.menu, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.login);
+                  }, //fim do onTap
+                  child: const AppIcon(
+                    AppIcons.menu,
+                    color: Colors.white,
+                  ), 
                 ),
               ],
             ),
@@ -75,7 +81,7 @@ class MenuScreen extends StatelessWidget {
                     _menuCard(
                       title: "CADASTRAR ITENS",
                       subtitle: "Cadastre alimentos e\ncardápios",
-                      icon: Icons.add,
+                      icon: AppIcons.add,
                     ),
 
                     const SizedBox(height: 20),
@@ -84,7 +90,7 @@ class MenuScreen extends StatelessWidget {
                     _menuCard(
                       title: "CONSULTAR ITENS",
                       subtitle: "Consulte alimentos e\ncardápios",
-                      icon: Icons.search,
+                      icon: AppIcons.busca,
                     ),
 
                     const SizedBox(height: 20),
@@ -93,7 +99,7 @@ class MenuScreen extends StatelessWidget {
                     _menuCard(
                       title: "CRÉDITOS",
                       subtitle: "Acesse para conhecer os\ndesenvolvedores",
-                      icon: Icons.receipt_long,
+                      icon: AppIcons.creditos,
                     ),
                   ],
                 ),
@@ -106,12 +112,13 @@ class MenuScreen extends StatelessWidget {
   }
 }
 
+
 // ================== COMPONENTE CARD ==================
 
 Widget _menuCard({
   required String title,
   required String subtitle,
-  required IconData icon,
+  required IconData icon, //continua sendo IconData (sua lib retorna isso)
 }) {
   return Container(
     width: double.infinity,
@@ -149,7 +156,10 @@ Widget _menuCard({
         // icone
         CircleAvatar(
           backgroundColor: Colors.white,
-          child: Icon(icon, color: AppColors.primaryGreen),
+          child: AppIcon(
+            icon,
+            color: AppColors.primaryGreen,
+          ), //usa sua lib aqui
         ),
       ],
     ),

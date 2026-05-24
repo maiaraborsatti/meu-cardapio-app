@@ -38,6 +38,7 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: 'Criar novo usuário',
                 onPressed: () {
+                  
                   // navegar para cadastro
                 },
               ),
