@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../models/usuario.dart';
 
 class UsuarioAvatarCard extends StatelessWidget {
+
   final Usuario usuario;
   final VoidCallback onTap;
 
@@ -14,6 +16,7 @@ class UsuarioAvatarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       onTap: onTap,
 
@@ -34,10 +37,12 @@ class UsuarioAvatarCard extends StatelessWidget {
 
             child: ClipOval(
               child: usuario.foto != null
-                  ? Image.asset(
-                      usuario.foto!,
+
+                  ? Image.file(
+                      File(usuario.foto!),
                       fit: BoxFit.cover,
                     )
+
                   : Container(
                       color: Colors.white,
                       child: const Icon(
