@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../routes/app_routes.dart';
 import '../theme/app_colors.dart';
 import '../widgets/custom_button.dart';
 
@@ -29,7 +30,10 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: 'Já tenho conta',
                 onPressed: () {
-                   
+                    Navigator.pushNamed(
+                    context,
+                    AppRoutes.usuarios,
+                  );
                 },
               ),
 
@@ -38,8 +42,10 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: 'Criar novo usuário',
                 onPressed: () {
-                  
-                  // navegar para cadastro
+                   Navigator.pushNamed(
+                    context,
+                    AppRoutes.cadastroUsuario,
+                  );
                 },
               ),
 

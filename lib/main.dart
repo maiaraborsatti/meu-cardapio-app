@@ -4,6 +4,8 @@ import 'routes/app_routes.dart';
 
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/usuarios_screen.dart';
+import 'screens/cadastro_usuario_screen.dart';
 
 import 'screens/menu_screen.dart';
 
@@ -27,6 +29,8 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.login: (context) => const LoginScreen(),
 
         AppRoutes.menu: (context) => const MenuScreen(),
+        AppRoutes.usuarios: (context) => const UsuariosScreen(),
+        AppRoutes.cadastroUsuario: (context) => const CadastroUsuarioScreen(),
       },
     );
   }
