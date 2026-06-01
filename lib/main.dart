@@ -7,6 +7,8 @@ import 'screens/login_screen.dart';
 import 'screens/usuarios_screen.dart';
 import 'screens/cadastro_usuario_screen.dart';
 
+import 'screens/menu_screen.dart';
+
 void main() {
   runApp(const MeuCardapioApp());
 }
@@ -25,6 +27,8 @@ class MeuCardapioApp extends StatelessWidget {
       routes: {
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.login: (context) => const LoginScreen(),
+
+        AppRoutes.menu: (context) => const MenuScreen(),
         AppRoutes.usuarios: (context) => const UsuariosScreen(),
         AppRoutes.cadastroUsuario: (context) => const CadastroUsuarioScreen(),
       },
