@@ -74,6 +74,7 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
               const SizedBox(height: 30),
 
               CustomSearchInput(
+                hintText: 'Buscar usuário',
                 onChanged: buscarUsuarios,
               ),
 

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomSearchInput extends StatelessWidget {
   final Function(String) onChanged;
+  final String hintText;
 
   const CustomSearchInput({
     super.key,
     required this.onChanged,
+    required this.hintText,
   });
 
   @override
@@ -14,7 +16,7 @@ class CustomSearchInput extends StatelessWidget {
       onChanged: onChanged,
 
       decoration: InputDecoration(
-        hintText: 'Buscar usuário',
+        hintText: hintText,
 
         prefixIcon: const Icon(Icons.search),
 
