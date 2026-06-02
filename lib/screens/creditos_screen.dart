@@ -78,11 +78,19 @@ class CreditosScreen extends StatelessWidget {
               const SizedBox(height: 24), // espaço antes do logo
 
               // logo
-              Image.asset(
-                'assets/logo.png',
-                height: 80,
-                fit: BoxFit.contain,
-              ),
+              GestureDetector(
+            onTap: () {
+           Navigator.pushReplacementNamed(
+            context,
+            AppRoutes.menu,
+            );
+                    },
+          child: Image.asset(
+          'assets/logo.png',
+          height: 80,
+          fit: BoxFit.contain,
+            ),
+          ),
 
             ],
           ),
