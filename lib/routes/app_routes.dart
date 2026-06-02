@@ -5,4 +5,5 @@ class AppRoutes {
   static const menu = '/menu';
   static const usuarios = '/usuarios';
   static const cadastroUsuario = '/cadastro-usuario';
+  
 }
