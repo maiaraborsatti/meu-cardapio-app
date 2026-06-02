@@ -32,7 +32,7 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.menu: (context) => const MenuScreen(),
         AppRoutes.usuarios: (context) => const UsuariosScreen(),
         AppRoutes.cadastroUsuario: (context) => const CadastroUsuarioScreen(),
-        
+        AppRoutes.creditos: (context) => const CreditosScreen(), 
       },
     );
   }
