@@ -86,7 +86,13 @@ class MenuScreen extends StatelessWidget {
                       title: "CADASTRAR ITENS",
                       subtitle: "Cadastre alimentos e\ncardápios",
                       icon: AppIcons.add,
-                      onTap: () {},
+                      onTap: () {
+                          Navigator.pushNamed(
+                          context,
+                          AppRoutes.cadastroCardapio,
+                          arguments: usuario,
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 20),
