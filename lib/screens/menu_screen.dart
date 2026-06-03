@@ -138,7 +138,13 @@ class MenuScreen extends StatelessWidget {
                           title: "CONSULTAR CARDÁPIOS",
                           subtitle: "Veja cardápios cadastrados",
                           icon: AppIcons.busca,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(
+                            context,
+                            AppRoutes.buscaCardapio,
+                            arguments: usuario.id,
+                            );
+                          },
                         ),
 
                         const SizedBox(height: 20),
