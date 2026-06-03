@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_icons.dart';
+import '../models/usuario.dart';
 
 
 // ================== TELA ==================
@@ -11,6 +12,9 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+  final usuario = ModalRoute.of(context)!.settings.arguments as Usuario;
+
     return Scaffold(
       backgroundColor: AppColors.primaryGreen,
 
@@ -34,8 +38,8 @@ class MenuScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Text(
-                      "Nome do Usuario",
+                     Text(
+                      "Bem Vindo ${usuario.nome}",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -82,6 +86,7 @@ class MenuScreen extends StatelessWidget {
                       title: "CADASTRAR ITENS",
                       subtitle: "Cadastre alimentos e\ncardápios",
                       icon: AppIcons.add,
+                      onTap: () {},
                     ),
 
                     const SizedBox(height: 20),
@@ -91,6 +96,7 @@ class MenuScreen extends StatelessWidget {
                       title: "CONSULTAR ITENS",
                       subtitle: "Consulte alimentos e\ncardápios",
                       icon: AppIcons.busca,
+                      onTap: () {},
                     ),
 
                     const SizedBox(height: 20),
@@ -100,6 +106,13 @@ class MenuScreen extends StatelessWidget {
                       title: "CRÉDITOS",
                       subtitle: "Acesse para conhecer os\ndesenvolvedores",
                       icon: AppIcons.creditos,
+                       onTap: () {
+            Navigator.pushNamed(
+            context,
+           AppRoutes.creditos,
+              );
+                       }
+
                     ),
                   ],
                 ),
@@ -118,9 +131,14 @@ class MenuScreen extends StatelessWidget {
 Widget _menuCard({
   required String title,
   required String subtitle,
-  required IconData icon, //continua sendo IconData (sua lib retorna isso)
+  required IconData icon, 
+  required VoidCallback onTap,
 }) {
-  return Container(
+
+
+  return InkWell(
+  onTap: onTap,
+  child: Container(
     width: double.infinity,
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
@@ -162,6 +180,7 @@ Widget _menuCard({
           ), //usa sua lib aqui
         ),
       ],
-    ),
+    )
+  ),
   );
 }
