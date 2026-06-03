@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/alimento.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
+import '../services/share_alimento_service.dart';
 
 class AlimentoCard extends StatelessWidget {
 
@@ -93,6 +94,19 @@ class AlimentoCard extends StatelessWidget {
               ],
             ),
           ),
+             
+                IconButton(
+      icon: const Icon(
+        AppIcons.compartilhar,
+        color: Colors.white,
+        size: 26,
+      ),
+      onPressed: () {
+        ShareAlimentoService()
+            .compartilharAlimento(alimento);
+      },
+    ),
+
         ],
       ),
     );
