@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../database/repositories/alimento_repository.dart';
 import '../database/repositories/cardapio_repository.dart';
-import '../database/repositories/usuario_repository.dart';
 
 import '../models/alimento.dart';
 import '../models/cardapio.dart';
@@ -35,13 +33,8 @@ class _CadastroCardapioScreenState
   final alimentoRepository =
       AlimentoRepository();
 
-  final usuarioRepository =
-      UsuarioRepository();
-
   final cardapioRepository =
       CardapioRepository();
-
-  List<Usuario> usuarios = [];
 
   List<Alimento> alimentos = [];
 
@@ -75,12 +68,7 @@ class _CadastroCardapioScreenState
     carregarDados();
   }
 
-  Future<void> carregarDados()
-      async {
-
-    final usuariosBanco =
-        await usuarioRepository
-            .listarTodosUsuarios();
+  Future<void> carregarDados() async {
 
     final alimentosBanco =
         await alimentoRepository
@@ -88,11 +76,7 @@ class _CadastroCardapioScreenState
 
     setState(() {
 
-      usuarios =
-          usuariosBanco;
-
-      alimentos =
-          alimentosBanco;
+      alimentos = alimentosBanco;
 
       isLoading = false;
     });
@@ -109,7 +93,7 @@ class _CadastroCardapioScreenState
       ).showSnackBar(
         const SnackBar(
           content: Text(
-            'Selecione um usuário.',
+            'Usuário não identificado.',
           ),
         ),
       );
@@ -216,68 +200,17 @@ if (!possuiAlimentos) {
     }
   }
 
-  void compartilharCardapio() {
-
-    final cafe =
-        selecoesCafe
-            .where(
-              (e) =>
-                  e != null,
-            )
-            .map(
-              (e) => e!.nome,
-            )
-            .join('\n');
-
-    final almoco =
-        selecoesAlmoco
-            .where(
-              (e) =>
-                  e != null,
-            )
-            .map(
-              (e) => e!.nome,
-            )
-            .join('\n');
-
-    final janta =
-        selecoesJanta
-            .where(
-              (e) =>
-                  e != null,
-            )
-            .map(
-              (e) => e!.nome,
-            )
-            .join('\n');
-
-    final texto = '''
-
-CARDÁPIO
-
-Usuário:
-${usuarioSelecionado?.nome ?? ''}
-
-CAFÉ
-$cafe
-
-ALMOÇO
-$almoco
-
-JANTA
-$janta
-
-''';
-
-    Share.share(
-      texto,
-    );
-  }
-
   @override
   Widget build(
     BuildContext context,
   ) {
+
+     final usuario =
+      ModalRoute.of(context)
+          ?.settings
+          .arguments as Usuario?;
+
+      usuarioSelecionado ??= usuario;
 
     if (isLoading) {
 
@@ -322,31 +255,12 @@ $janta
 
                   GestureDetector(
                     onTap: () {
-
-                      Navigator.pop(
-                        context,
-                      );
+                      Navigator.pop(context);
                     },
 
-                    child:
-                        const AppIcon(
+                    child: const AppIcon(
                       AppIcons.home,
-                      color:
-                          Colors.white,
-                      size: 34,
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap:
-                        compartilharCardapio,
-
-                    child:
-                        const AppIcon(
-                      AppIcons
-                          .compartilhar,
-                      color:
-                          Colors.white,
+                      color: Colors.white,
                       size: 34,
                     ),
                   ),
@@ -385,8 +299,6 @@ $janta
                     SingleChildScrollView(
                   child: Column(
                     children: [
-
-                      buildUsuarioDropdown(),
 
                       const SizedBox(
                         height: 30,
@@ -460,61 +372,6 @@ $janta
           ],
         ),
       ),
-    );
-  }
-
-  Widget buildUsuarioDropdown() {
-
-    return DropdownButtonFormField<
-        Usuario>(
-      value:
-          usuarioSelecionado,
-
-      decoration:
-          InputDecoration(
-        labelText:
-            'Usuário',
-
-        filled: true,
-        fillColor:
-            Colors.white,
-
-        border:
-            OutlineInputBorder(
-          borderRadius:
-              BorderRadius.circular(
-            22,
-          ),
-        ),
-      ),
-
-      items:
-          usuarios.map(
-        (
-          usuario,
-        ) {
-
-          return DropdownMenuItem(
-            value:
-                usuario,
-
-            child: Text(
-              usuario.nome,
-            ),
-          );
-        },
-      ).toList(),
-
-      onChanged: (
-        value,
-      ) {
-
-        setState(() {
-
-          usuarioSelecionado =
-              value;
-        });
-      },
     );
   }
 
