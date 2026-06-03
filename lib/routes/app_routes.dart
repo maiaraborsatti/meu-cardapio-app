@@ -9,4 +9,6 @@ class AppRoutes {
   
   static const cadastroAlimento = '/cadastro-alimento';
   static const buscaAlimento = '/busca-alimento';
+
+  static const cadastroCardapio = '/cadastro-cardapio';
 }
