@@ -9,6 +9,7 @@ import 'screens/cadastro_usuario_screen.dart';
 import 'screens/cadastro_alimento_screen.dart';
 import 'screens/busca_alimentos_screen.dart';
 import 'screens/menu_screen.dart';
+import 'screens/creditos_screen.dart';
 
 void main() {
   runApp(const MeuCardapioApp());
@@ -32,6 +33,7 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.menu: (context) => const MenuScreen(),
         AppRoutes.usuarios: (context) => const UsuariosScreen(),
         AppRoutes.cadastroUsuario: (context) => const CadastroUsuarioScreen(),
+        AppRoutes.creditos: (context) => const CreditosScreen(), 
         AppRoutes.cadastroAlimento: (context) => const CadastroAlimentoScreen(),
         AppRoutes.buscaAlimento: (context) => const BuscaAlimentosScreen(),
       },

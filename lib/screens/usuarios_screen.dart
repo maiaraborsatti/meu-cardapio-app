@@ -105,7 +105,8 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
 
                         Navigator.pushReplacementNamed(
                           context,
-                          AppRoutes.splash, //futuramente home
+                          AppRoutes.menu, //futuramente home
+                          arguments: usuario,
                         );
                       },
                     );
