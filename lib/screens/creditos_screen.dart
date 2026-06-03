@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_colors.dart';
+import '../models/usuario.dart';
 
 class CreditosScreen extends StatelessWidget {
   const CreditosScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    
+     final usuario = ModalRoute.of(context)!.settings.arguments as Usuario;
 
     // 🎨 estilo padrão dos nomes (evita repetição)
     const TextStyle nomeStyle = TextStyle(
@@ -62,8 +65,12 @@ class CreditosScreen extends StatelessWidget {
                 // 🖼️ LOGO CLICÁVEL
                 GestureDetector(
                   onTap: () {
-                    // 👉 AQUI você coloca sua rota depois
-                    //Navigator.pushNamed(context, '/suaRota');
+                    
+                    Navigator.pushNamed(
+                              context,
+                              AppRoutes.menu,
+                              arguments: usuario,
+                            );
                   },
 
                   child: Image.asset(
