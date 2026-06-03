@@ -5,6 +5,23 @@ import '../database.dart';
 class CardapioRepository {
   final _dbHelper = DatabaseHelper.instance;
 
+    //cria a lista de cardápios
+    Future<List<Cardapio>> listarCardapiosPorUsuario(int usuarioId) async {
+
+  final db = await _dbHelper.database;
+
+  final resultado = await db.query(
+    'cardapios',
+    where: 'usuario_id = ?',
+    whereArgs: [usuarioId],
+    orderBy: 'id DESC', // mais recente primeiro
+  );
+
+  return resultado
+      .map((e) => Cardapio.fromMap(e))
+      .toList();
+}
+
   // Cria o cabeçalho do cardápio vinculado ao usuário
   Future<int> criarCardapio(Cardapio cardapio) async {
     final db = await _dbHelper.database;
@@ -44,6 +61,7 @@ class CardapioRepository {
     final resultado = await db.rawQuery('''
       SELECT 
         ci.id AS item_id,
+        c.id AS cardapio_id, 
         ci.refeicao,
         a.nome AS alimento_nome,
         a.categoria AS alimento_categoria,

@@ -11,6 +11,7 @@ import 'screens/busca_alimentos_screen.dart';
 import 'screens/cadastro_cardapio_screen.dart';
 import 'screens/menu_screen.dart';
 import 'screens/creditos_screen.dart';
+import 'screens/busca_cardapios_screen.dart';
 
 void main() {
   runApp(const MeuCardapioApp());
@@ -26,7 +27,7 @@ class MeuCardapioApp extends StatelessWidget {
       title: 'Meu Cardápio',
 
       initialRoute: AppRoutes.splash,
-
+      
       routes: {
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.login: (context) => const LoginScreen(),
@@ -39,7 +40,16 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.cadastroAlimento: (context) => const CadastroAlimentoScreen(),
         AppRoutes.buscaAlimento: (context) => const BuscaAlimentosScreen(),
 
-        AppRoutes.cadastroCardapio: (context) => const CadastroCardapioScreen()
+        AppRoutes.cadastroCardapio: (context) => const CadastroCardapioScreen(),
+        AppRoutes.buscaCardapio: (context) {
+                  final usuarioId =
+                    ModalRoute.of(context)!.settings.arguments as int;
+
+                      return ListaCardapiosScreen(
+                        usuarioId: usuarioId,
+                          );
+                        },
+        
       },
     );
   }
