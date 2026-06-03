@@ -26,7 +26,7 @@ class MeuCardapioApp extends StatelessWidget {
       title: 'Meu Cardápio',
 
       initialRoute: AppRoutes.splash,
-
+      
       routes: {
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.login: (context) => const LoginScreen(),
