@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'routes/app_routes.dart';
+import 'theme/app_colors.dart';
 
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
@@ -25,6 +26,11 @@ class MeuCardapioApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meu Cardápio',
+
+      theme: ThemeData(
+      scaffoldBackgroundColor: AppColors.primaryGreen,
+      canvasColor: AppColors.primaryGreen,
+      ),
 
       initialRoute: AppRoutes.splash,
       
