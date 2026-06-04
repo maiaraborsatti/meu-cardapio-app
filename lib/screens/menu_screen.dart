@@ -3,6 +3,7 @@ import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_icons.dart';
 import '../models/usuario.dart';
+import 'dart:io';
 
 // ================== TELA ==================
 
@@ -32,10 +33,16 @@ class MenuScreen extends StatelessWidget {
                       CircleAvatar(
                         radius: 24,
                         backgroundColor: Colors.white,
-                        child: AppIcon(
-                          AppIcons.perfil,
-                          color: AppColors.primaryGreen,
-                        ),
+                           backgroundImage: usuario.foto != null
+                              ? FileImage(File(usuario.foto!))
+                              : null,
+
+                          child: usuario.foto == null
+                              ? AppIcon(
+                                  AppIcons.perfil,
+                                  color: AppColors.primaryGreen,
+                                )
+                              : null, 
                       ),
                       const SizedBox(width: 10),
                       Text(
@@ -51,12 +58,41 @@ class MenuScreen extends StatelessWidget {
 
                   // menu icon
                   InkWell(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.login);
-                    },
-                    child: const AppIcon(
-                      AppIcons.menu,
-                      color: Colors.white,
+                   onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              title: const Text("Sair"),
+                              content: const Text("Deseja fazer logout?"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Cancelar"),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pushReplacementNamed(context, AppRoutes.login);
+                                  },
+                                  child: const Text(
+                                    "Sair",
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                       child: const AppIcon(
+                        AppIcons.logout,
+                        color: Colors.white,
                     ),
                   ),
                 ],
