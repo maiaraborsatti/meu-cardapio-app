@@ -5,6 +5,8 @@ import '../models/cardapio.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
 import '../widgets/custom_search_input.dart';
+import '../services/share_cardapio_service.dart';
+
 
 class ListaCardapiosScreen extends StatefulWidget {
 
@@ -256,6 +258,23 @@ class _ListaCardapiosScreenState
                                       ],
                                     ),
                                   ),
+                               IconButton(
+                                      icon: const Icon(
+                                        AppIcons.compartilhar,
+                                          color: Colors.white,
+                                            size: 26,
+                                                      ),
+                                      onPressed: () {
+                                        final id = cardapio.id;
+
+                                         if (id == null) return;
+
+                                      ShareCardapioService()
+                                            .compartilharCardapioPorId(widget.usuarioId, id);
+                                                    },
+                                          ),
+
+
                                 ],
                               ),
                             ),
