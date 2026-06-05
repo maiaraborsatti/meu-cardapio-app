@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:share_plus/share_plus.dart';
-
 import '../database/repositories/alimento_repository.dart';
 import '../models/alimento.dart';
 import '../theme/app_colors.dart';
@@ -135,21 +133,7 @@ class _CadastroAlimentoScreenState
     });
   }
 
-  void compartilharAlimento() {
 
-    final texto = '''
-
-Nome: ${nomeController.text}
-
-Categoria: ${categoriaSelecionada ?? '-'}
-
-Tipo: ${tipoSelecionado ?? '-'}
-''';
-
-    Share.share(
-      texto,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -174,15 +158,20 @@ Tipo: ${tipoSelecionado ?? '-'}
                     MainAxisAlignment
                         .spaceBetween,
 
-                children: const [
+                 children: [
 
-                  AppIcon(
-                    AppIcons.home,
-                    color: Colors.white,
-                    size: 34,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const AppIcon(
+                      AppIcons.home,
+                      color: Colors.white,
+                      size: 34,
+                    ),
                   ),
 
-                  AppIcon(
+                  const AppIcon(
                     AppIcons.menu,
                     color: Colors.white,
                     size: 34,
@@ -554,13 +543,6 @@ Tipo: ${tipoSelecionado ?? '-'}
                         height: 20,
                       ),
 
-                      CustomButton(
-                        text:
-                            'COMPARTILHAR',
-
-                        onPressed:
-                            compartilharAlimento,
-                      ),
                     ],
                   ),
                 ),

@@ -88,19 +88,19 @@ class _BuscaAlimentosScreenState
                     MainAxisAlignment
                         .spaceBetween,
 
-                children: const [
+                 children: [
 
-                  AppIcon(
-                    AppIcons.home,
-                    color: Colors.white,
-                    size: 34,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const AppIcon(
+                      AppIcons.home,
+                      color: Colors.white,
+                      size: 34,
+                    ),
                   ),
 
-                  AppIcon(
-                    AppIcons.menu,
-                    color: Colors.white,
-                    size: 34,
-                  ),
                 ],
               ),
             ),

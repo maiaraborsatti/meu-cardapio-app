@@ -46,7 +46,7 @@ class MenuScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        "Bem Vindo ${usuario.nome}",
+                        "Bem Vindo, ${usuario.nome}",
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -77,8 +77,12 @@ class MenuScreen extends StatelessWidget {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pushReplacementNamed(context, AppRoutes.login);
+                                     Navigator.of(context).pop();
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      AppRoutes.login,
+                                      (route) => false,
+                                    );
                                   },
                                   child: const Text(
                                     "Sair",
