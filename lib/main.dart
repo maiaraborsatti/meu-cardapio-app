@@ -13,6 +13,7 @@ import 'screens/cadastro_cardapio_screen.dart';
 import 'screens/menu_screen.dart';
 import 'screens/creditos_screen.dart';
 import 'screens/busca_cardapios_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MeuCardapioApp());
@@ -26,6 +27,21 @@ class MeuCardapioApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meu Cardápio',
+
+              locale: const Locale('pt', 'BR'),
+
+          supportedLocales: const [
+            Locale('pt', 'BR'),
+          ],
+
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+
+
+
 
       theme: ThemeData(
       scaffoldBackgroundColor: AppColors.primaryGreen,

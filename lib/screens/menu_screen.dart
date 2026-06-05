@@ -26,12 +26,14 @@ class MenuScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+
                 children: [
                   // avatar + nome
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 24,
+                        radius: 26,
                         backgroundColor: Colors.white,
                            backgroundImage: usuario.foto != null
                               ? FileImage(File(usuario.foto!))
@@ -44,7 +46,10 @@ class MenuScreen extends StatelessWidget {
                                 )
                               : null, 
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                       Text(
                         "Bem Vindo, ${usuario.nome}",
                         style: const TextStyle(
@@ -53,8 +58,19 @@ class MenuScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      const SizedBox(height: 2),
+                          Text(
+                            "${usuario.idade} anos",
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
+                  
 
                   // menu icon
                   InkWell(
