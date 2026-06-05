@@ -116,7 +116,7 @@ class _BuscaAlimentosScreenState
 
                 decoration:
                     const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.white,
 
                   borderRadius:
                       BorderRadius.only(

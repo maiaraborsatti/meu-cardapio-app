@@ -12,6 +12,7 @@ import 'screens/busca_alimentos_screen.dart';
 import 'screens/cadastro_cardapio_screen.dart';
 import 'screens/menu_screen.dart';
 import 'screens/creditos_screen.dart';
+import 'screens/detalhes_cardapios_screen.dart';
 import 'screens/busca_cardapios_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -63,6 +64,7 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.buscaAlimento: (context) => const BuscaAlimentosScreen(),
 
         AppRoutes.cadastroCardapio: (context) => const CadastroCardapioScreen(),
+        AppRoutes.detalhesCardapio: (context) => const DetalhesCardapioScreen(),
         AppRoutes.buscaCardapio: (context) {
                   final usuarioId =
                     ModalRoute.of(context)!.settings.arguments as int;

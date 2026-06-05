@@ -12,5 +12,6 @@ class AppRoutes {
 
   static const cadastroCardapio = '/cadastro-cardapio';
   static const buscaCardapio = '/busca-cardapio';
+  static const detalhesCardapio = '/detalhes-cardapio';
 
 }
