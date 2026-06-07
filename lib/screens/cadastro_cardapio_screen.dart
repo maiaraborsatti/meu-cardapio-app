@@ -354,11 +354,10 @@ if (!possuiAlimentos) {
                       ),
 
                       CustomButton(
-                        text:
-                            'SALVAR',
-
-                        onPressed:
-                            salvarCardapio,
+                        text: 'SALVAR',
+                        backgroundColor: AppColors.primaryGreen,
+                        textColor: AppColors.white,
+                        onPressed: salvarCardapio,
                       ),
 
                       const SizedBox(

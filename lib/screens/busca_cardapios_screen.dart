@@ -131,11 +131,6 @@ class _ListaCardapiosScreenState
                     ),
                   ),
 
-                  const AppIcon(
-                    AppIcons.menu,
-                    color: Colors.white,
-                    size: 34,
-                  ),
                 ],
               ),
             ),
@@ -163,12 +158,18 @@ class _ListaCardapiosScreenState
                 child: Column(
                   children: [
 
-                    // campo de busca (não funcional ainda)
-                    CustomSearchInput(
-                      hintText:
-                          'consultar cardápio',
-                      onChanged: (_) {},
+                 
+                    Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Seus Cardápios',
+                      style: TextStyle(
+                        color: AppColors.secondGreen,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                  ),
 
                     const SizedBox(height: 36),
 

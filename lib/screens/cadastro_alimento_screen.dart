@@ -171,11 +171,7 @@ class _CadastroAlimentoScreenState
                     ),
                   ),
 
-                  const AppIcon(
-                    AppIcons.menu,
-                    color: Colors.white,
-                    size: 34,
-                  ),
+                  
                 ],
               ),
             ),
@@ -532,11 +528,10 @@ class _CadastroAlimentoScreenState
                       ),
 
                       CustomButton(
-                        text:
-                            'ADICIONAR',
-
-                        onPressed:
-                            cadastrarAlimento,
+                        text: 'ADICIONAR',
+                        backgroundColor: AppColors.primaryGreen,
+                        textColor: AppColors.white,
+                        onPressed: cadastrarAlimento,
                       ),
 
                       const SizedBox(

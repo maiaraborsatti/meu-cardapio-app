@@ -74,9 +74,9 @@ class _DetalhesCardapioScreenState
   Icon _iconePorRefeicao(String refeicao) {
     switch (refeicao.toLowerCase()) {
       case 'café':
-        return const Icon(Icons.local_cafe, color: AppColors.primaryGreen);
+        return const Icon(Icons.coffee, color: AppColors.primaryGreen);
       case 'almoço':
-        return const Icon(Icons.lunch_dining, color: AppColors.primaryGreen);
+        return const Icon(Icons.brunch_dining, color: AppColors.primaryGreen);
       case 'jantar':
         return const Icon(Icons.dinner_dining, color: AppColors.primaryGreen);
       default:
@@ -120,11 +120,6 @@ class _DetalhesCardapioScreenState
                     ),
                   ),
 
-                  const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 34,
-                  ),
                 ],
               ),
             ),
