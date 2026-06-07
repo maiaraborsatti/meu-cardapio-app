@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'routes/app_routes.dart';
+import 'theme/app_colors.dart';
 
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
@@ -11,7 +12,9 @@ import 'screens/busca_alimentos_screen.dart';
 import 'screens/cadastro_cardapio_screen.dart';
 import 'screens/menu_screen.dart';
 import 'screens/creditos_screen.dart';
+import 'screens/detalhes_cardapios_screen.dart';
 import 'screens/busca_cardapios_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MeuCardapioApp());
@@ -25,6 +28,26 @@ class MeuCardapioApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Meu Cardápio',
+
+              locale: const Locale('pt', 'BR'),
+
+          supportedLocales: const [
+            Locale('pt', 'BR'),
+          ],
+
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+
+
+
+
+      theme: ThemeData(
+      scaffoldBackgroundColor: AppColors.primaryGreen,
+      canvasColor: AppColors.primaryGreen,
+      ),
 
       initialRoute: AppRoutes.splash,
       
@@ -41,6 +64,7 @@ class MeuCardapioApp extends StatelessWidget {
         AppRoutes.buscaAlimento: (context) => const BuscaAlimentosScreen(),
 
         AppRoutes.cadastroCardapio: (context) => const CadastroCardapioScreen(),
+        AppRoutes.detalhesCardapio: (context) => const DetalhesCardapioScreen(),
         AppRoutes.buscaCardapio: (context) {
                   final usuarioId =
                     ModalRoute.of(context)!.settings.arguments as int;

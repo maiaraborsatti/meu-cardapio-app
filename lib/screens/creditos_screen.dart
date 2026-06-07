@@ -52,7 +52,7 @@ class CreditosScreen extends StatelessWidget {
                 const Text("Kelvin Adriel", style: nomeStyle, textAlign: TextAlign.center),
                 const SizedBox(height: 8),
 
-                const Text("Maiara Borsatti", style: nomeStyle, textAlign: TextAlign.center),
+                const Text("Maiara Zuim", style: nomeStyle, textAlign: TextAlign.center),
                 const SizedBox(height: 8),
 
                 const Text("Walter Belarmino", style: nomeStyle, textAlign: TextAlign.center),
@@ -62,15 +62,16 @@ class CreditosScreen extends StatelessWidget {
 
                 const SizedBox(height: 60),
 
-                // 🖼️ LOGO CLICÁVEL
+                //LOGO CLICÁVEL
                 GestureDetector(
                   onTap: () {
                     
-                    Navigator.pushNamed(
-                              context,
-                              AppRoutes.menu,
-                              arguments: usuario,
-                            );
+                     Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        AppRoutes.menu,
+                        (route) => false,
+                        arguments: usuario,
+                      );
                   },
 
                   child: Image.asset(

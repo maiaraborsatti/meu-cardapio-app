@@ -7,6 +7,7 @@ import '../database/repositories/usuario_repository.dart';
 import '../models/usuario.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_colors.dart';
+import 'package:intl/intl.dart';
 
 class CadastroUsuarioScreen extends StatefulWidget {
   const CadastroUsuarioScreen({super.key});
@@ -177,7 +178,7 @@ class _CadastroUsuarioScreenState
                     child: Text(
                       dataNascimento == null
                           ? 'Selecionar data de nascimento'
-                          : '${dataNascimento!.day}/${dataNascimento!.month}/${dataNascimento!.year}',
+                          : DateFormat('dd/MM/yyyy').format(dataNascimento!),
                     ),
                   ),
                 ),

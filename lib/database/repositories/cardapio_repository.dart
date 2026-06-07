@@ -75,4 +75,26 @@ class CardapioRepository {
 
     return resultado;
   }
+
+  Future<List<Map<String, dynamic>>> buscarCardapioPorId(int cardapioId) async {
+  final db = await _dbHelper.database;
+
+  final resultado = await db.rawQuery('''
+    SELECT 
+      ci.id AS item_id,
+      c.id AS cardapio_id, 
+      ci.refeicao,
+      a.id AS alimento_id,
+      a.nome AS alimento_nome,
+      a.categoria AS alimento_categoria,
+      a.tipo AS alimento_tipo,
+      a.foto AS alimento_foto
+    FROM cardapios c
+    INNER JOIN cardapio_items ci ON c.id = ci.cardapio_id
+    INNER JOIN alimentos a ON ci.alimento_id = a.id
+    WHERE c.id = ?
+  ''', [cardapioId]);
+
+  return resultado;
+}
 }

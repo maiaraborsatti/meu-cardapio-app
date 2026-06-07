@@ -74,7 +74,7 @@ class AlimentoCard extends StatelessWidget {
                   alimento.nome.toUpperCase(),
 
                   style: const TextStyle(
-                    color: AppColors.yellow,
+                    color: AppColors.secondGreen,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),

@@ -103,9 +103,10 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
 
                       onTap: () {
 
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.menu, //futuramente home
+                          (route) => false,
                           arguments: usuario,
                         );
                       },

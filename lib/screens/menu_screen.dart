@@ -3,6 +3,7 @@ import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_icons.dart';
 import '../models/usuario.dart';
+import 'dart:io';
 
 // ================== TELA ==================
 
@@ -25,38 +26,93 @@ class MenuScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+
                 children: [
                   // avatar + nome
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 24,
+                        radius: 26,
                         backgroundColor: Colors.white,
-                        child: AppIcon(
-                          AppIcons.perfil,
-                          color: AppColors.primaryGreen,
-                        ),
+                           backgroundImage: usuario.foto != null
+                              ? FileImage(File(usuario.foto!))
+                              : null,
+
+                          child: usuario.foto == null
+                              ? AppIcon(
+                                  AppIcons.perfil,
+                                  color: AppColors.primaryGreen,
+                                )
+                              : null, 
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                       Text(
-                        "Bem Vindo ${usuario.nome}",
+                        "Bem Vindo, ${usuario.nome}",
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      const SizedBox(height: 2),
+                          Text(
+                            "${usuario.idade} anos",
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
+                  
 
                   // menu icon
                   InkWell(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.login);
-                    },
-                    child: const AppIcon(
-                      AppIcons.menu,
-                      color: Colors.white,
+                   onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              title: const Text("Sair"),
+                              content: const Text("Deseja fazer logout?"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Cancelar"),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                     Navigator.of(context).pop();
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      AppRoutes.login,
+                                      (route) => false,
+                                    );
+                                  },
+                                  child: const Text(
+                                    "Sair",
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                       child: const AppIcon(
+                        AppIcons.logout,
+                        color: Colors.white,
                     ),
                   ),
                 ],

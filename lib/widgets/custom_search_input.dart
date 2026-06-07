@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
 class CustomSearchInput extends StatelessWidget {
   final Function(String) onChanged;
@@ -23,10 +24,22 @@ class CustomSearchInput extends StatelessWidget {
         filled: true,
         fillColor: Colors.white,
 
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide.none,
+        enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30),
+    borderSide: BorderSide(
+      color: AppColors.secondGreen, 
+    ),
+  ),
+
+    focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide(
+          color: AppColors.secondGreen,
+          width: 2,
         ),
+      ),
+
+        
       ),
     );
   }
