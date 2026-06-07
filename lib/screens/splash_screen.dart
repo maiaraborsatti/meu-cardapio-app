@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_cardapio_app/database/repositories/usuario_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/app_colors.dart';
@@ -27,15 +28,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await Future.delayed(const Duration(seconds: 2)); // mantém o tempo da splash
 
-    if (!mounted) return;
-
     if (userId != null) {
-      // ✅ usuário já estava logado
-      Navigator.pushReplacementNamed(context, AppRoutes.menu);
-    } else {
-      // ❌ não tem usuário salvo
-      Navigator.pushReplacementNamed(context, AppRoutes.usuarios);
-    }
+
+  final usuario = await UsuarioRepository().buscarUsuarioPorId(userId);
+
+  if (!mounted) return;
+
+  Navigator.pushReplacementNamed(
+    context,
+    AppRoutes.menu,
+    arguments: usuario, // 🔥 AGORA TEM USUÁRIO
+  );
+
+} else {
+    if (!mounted) return;
+  Navigator.pushReplacementNamed(context, AppRoutes.login);
+}
   }
 
   @override
