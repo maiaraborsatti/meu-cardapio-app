@@ -4,7 +4,7 @@ import 'app_colors.dart';
 class AppIcons {
 
   // Navegação
-  static const home = Icons.home;
+  static const home = Icons.arrow_back;
   static const busca = Icons.search;
   static const add = Icons.add_circle;
   static const creditos = Icons.receipt_long;

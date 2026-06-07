@@ -3,6 +3,7 @@ import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_icons.dart';
 import '../models/usuario.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
 // ================== TELA ==================
@@ -73,48 +74,61 @@ class MenuScreen extends StatelessWidget {
                   
 
                   // menu icon
-                  InkWell(
-                   onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              title: const Text("Sair"),
-                              content: const Text("Deseja fazer logout?"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text("Cancelar"),
+                  // menu icon
+                      InkWell(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                     Navigator.of(context).pop();
-                                    Navigator.pushNamedAndRemoveUntil(
-                                      context,
-                                      AppRoutes.login,
-                                      (route) => false,
-                                    );
-                                  },
-                                  child: const Text(
-                                    "Sair",
-                                    style: TextStyle(color: Colors.red),
+                                title: const Text("Sair"),
+                                content: const Text("Deseja fazer logout?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancelar"),
                                   ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                       child: const AppIcon(
-                        AppIcons.logout,
-                        color: Colors.white,
-                    ),
-                  ),
+                                  TextButton(
+                                    onPressed: () async {
+
+                                      // 🔥 pega o SharedPreferences
+                                      final prefs = await SharedPreferences.getInstance();
+
+                                      // 🔥 remove o usuário logado
+                                      await prefs.remove('usuario_logado_id');
+
+                                      if (!context.mounted) return;
+
+                                      // fecha o dialog
+                                      Navigator.of(context).pop();
+
+                                      // navega pra tela de usuários
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        AppRoutes.usuarios,
+                                        (route) => false,
+                                      );
+                                    },
+                                    child: const Text(
+                                      "Sair",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: const AppIcon(
+                          AppIcons.logout,
+                          color: Colors.white,
+                        ),
+                      ),
                 ],
               ),
             ),

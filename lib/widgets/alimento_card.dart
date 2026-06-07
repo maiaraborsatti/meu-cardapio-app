@@ -8,7 +8,6 @@ import '../theme/app_icons.dart';
 import '../services/share_alimento_service.dart';
 
 class AlimentoCard extends StatelessWidget {
-
   final Alimento alimento;
 
   const AlimentoCard({
@@ -18,95 +17,88 @@ class AlimentoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      margin: const EdgeInsets.only(
-        bottom: 20,
-      ),
-
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
 
       decoration: BoxDecoration(
         color: AppColors.primaryGreen,
-
-        borderRadius:
-            BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(18),
       ),
 
       child: Row(
         children: [
-
+          // IMAGEM MENOR E MAIS LIMPA
           Container(
-            width: 70,
-            height: 70,
-
+            width: 52,
+            height: 52,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,
             ),
-
             child: ClipOval(
               child: alimento.foto != null
-
                   ? Image.file(
                       File(alimento.foto!),
                       fit: BoxFit.cover,
                     )
-
-                  : const AppIcon(
-                      AppIcons.cardapio,
-                      size: 45,
-                      color: Colors.white,
+                  : const Icon(
+                      AppIcons.biscoito,
+                      color: AppColors.primaryGreen,
+                      size: 28,
                     ),
             ),
           ),
 
-          const SizedBox(width: 18),
+          const SizedBox(width: 12),
 
+          // TEXTO MAIS ORGANIZADO
           Expanded(
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start,
-
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
-
                 Text(
                   alimento.nome.toUpperCase(),
-
                   style: const TextStyle(
-                    color: AppColors.secondGreen,
-                    fontSize: 22,
+                    color: AppColors.yellow,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5,
                   ),
                 ),
 
-                const SizedBox(height: 6),
+                const SizedBox(height: 2),
 
                 Text(
-                  '${alimento.tipo} | ${alimento.categoria}',
-
+                  '${alimento.tipo} • ${alimento.categoria}',
                   style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    color: Colors.white70,
+                    fontSize: 13,
                   ),
                 ),
               ],
             ),
           ),
-             
-                IconButton(
-      icon: const Icon(
-        AppIcons.compartilhar,
-        color: Colors.white,
-        size: 26,
-      ),
-      onPressed: () {
-        ShareAlimentoService()
-            .compartilharAlimento(alimento);
-      },
-    ),
 
+          // BOTÃO MAIS DISCRETO
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.15),
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              icon: const Icon(
+                AppIcons.compartilhar,
+                color: Colors.white,
+                size: 20,
+              ),
+              onPressed: () {
+                ShareAlimentoService()
+                    .compartilharAlimento(alimento);
+              },
+            ),
+          ),
         ],
       ),
     );
