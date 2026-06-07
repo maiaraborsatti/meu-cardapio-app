@@ -8,6 +8,7 @@ import '../widgets/custom_search_input.dart';
 import '../widgets/usuario_avatar_card.dart';
 
 import '../routes/app_routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UsuariosScreen extends StatefulWidget {
   const UsuariosScreen({super.key});
@@ -101,11 +102,19 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
 
                       usuario: usuario,
 
-                      onTap: () {
+                      onTap: () async {
 
+                        // pega instancia do storage
+                        final prefs = await SharedPreferences.getInstance();
+
+                        // salva o id do usuario selecionado
+                        await prefs.setInt('usuario_logado_id', usuario.id!);
+                           
+                           if (!mounted) return;
+                        // navega normalmente
                         Navigator.pushNamedAndRemoveUntil(
                           context,
-                          AppRoutes.menu, //futuramente home
+                          AppRoutes.menu,
                           (route) => false,
                           arguments: usuario,
                         );
