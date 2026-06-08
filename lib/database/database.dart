@@ -27,7 +27,7 @@ class DatabaseHelper {
 
   // criação das tabelas
   Future _createDB(Database db, int version) async {
-    // 1. Tabela de Usuários
+    // Tabela de usuários
     await db.execute('''
       CREATE TABLE usuarios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,7 +38,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 2. Tabela de Alimentos
+    // Tabela de alimentos
     await db.execute('''
       CREATE TABLE alimentos (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -50,7 +50,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 3. Tabela de Cardápios
+    // Tabela de cardápios
     await db.execute('''
       CREATE TABLE cardapios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -60,7 +60,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // 4. Tabela Intermediária: Itens do Cardápio
+    // Tabela intermediária: itens do cardápio
     await db.execute('''
       CREATE TABLE cardapio_items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

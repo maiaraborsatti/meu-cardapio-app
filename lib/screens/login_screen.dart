@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
 
-              // ================== BLOCO 1: LOGO ==================
+              // Bloco 1
               Expanded(
                 child: Center(
                   child: Image.asset(
@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              // ================== BLOCO 2: BOTÕES ==================
+              // Bloco 2
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              // ================== BLOCO 3: RODAPÉ ==================
+              // Bloco 3
               const Padding(
                 padding: EdgeInsets.only(bottom: 24),
                 child: Text(

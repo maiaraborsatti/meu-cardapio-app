@@ -60,7 +60,7 @@ class _DetalhesCardapioScreenState
     });
   }
 
-  // 🔥 CONVERSOR (MAP → ALIMENTO)
+ 
   Alimento mapToAlimento(Map<String, dynamic> item) {
     return Alimento(
       id: item['alimento_id'],
@@ -77,12 +77,12 @@ class _DetalhesCardapioScreenState
         return const Icon(Icons.coffee, color: AppColors.primaryGreen);
       case 'almoço':
         return const Icon(Icons.brunch_dining, color: AppColors.primaryGreen);
-      case 'jantar':
+      case 'janta':
         return const Icon(Icons.dinner_dining, color: AppColors.primaryGreen);
       default:
         return const Icon(Icons.restaurant, color: AppColors.primaryGreen);
     }
-  }//MUDAR OS ICONES PARA OS PADRÕES
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class _DetalhesCardapioScreenState
         child: Column(
           children: [
 
-            // 🔝 TOPO (igual sua outra tela)
+            
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 28,
@@ -124,7 +124,7 @@ class _DetalhesCardapioScreenState
               ),
             ),
 
-            // 📦 CONTEÚDO
+          
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -141,7 +141,7 @@ class _DetalhesCardapioScreenState
                 child: ListView(
                   children: [
 
-                    // 🧾 TÍTULO
+                   
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
@@ -164,7 +164,7 @@ class _DetalhesCardapioScreenState
 
                     const SizedBox(height: 30),
 
-                    // 🍽️ SEÇÕES
+                    
                     ..._buildSecoes(),
                   ],
                 ),
@@ -178,7 +178,7 @@ class _DetalhesCardapioScreenState
 
   List<Widget> _buildSecoes() {
 
-    final ordem = ['café', 'almoço', 'jantar'];
+    final ordem = ['café', 'almoço', 'janta'];
 
     return ordem.where((ref) => agrupado.containsKey(ref)).map((refeicao) {
 

@@ -59,7 +59,7 @@ class _ListaCardapiosScreenState
     for (var item in itens) {
 
       final nome = item['alimento_nome'];
-      final cardapioId = item['cardapio_id']; // 👈 IMPORTANTE
+      final cardapioId = item['cardapio_id']; 
 
       if (!nomesPorCardapio
           .containsKey(cardapioId)) {
