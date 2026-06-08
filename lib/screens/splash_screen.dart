@@ -23,7 +23,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> verificarLogin() async {
 
     final prefs = await SharedPreferences.getInstance();
-
     final userId = prefs.getInt('usuario_logado_id');
 
     await Future.delayed(const Duration(seconds: 2)); // mantém o tempo da splash
@@ -37,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Navigator.pushReplacementNamed(
     context,
     AppRoutes.menu,
-    arguments: usuario, // 🔥 AGORA TEM USUÁRIO
+    arguments: usuario, 
   );
 
 } else {

@@ -87,19 +87,11 @@ class _CadastroAlimentoScreenState
 
     final alimento =
         Alimento(
-      nome:
-          nomeController.text,
-
-      foto:
-          imagemSelecionada?.path,
-
-      categoria:
-          categoriaSelecionada!,
-
-      tipo:
-          tipoSelecionado!,
+      nome:nomeController.text,
+      foto:imagemSelecionada?.path,
+      categoria:categoriaSelecionada!,
+      tipo:tipoSelecionado!,
     );
-
     await repository
         .inserirAlimento(
       alimento,

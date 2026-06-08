@@ -28,7 +28,6 @@ class AlimentoCard extends StatelessWidget {
 
       child: Row(
         children: [
-          // IMAGEM MENOR E MAIS LIMPA
           Container(
             width: 52,
             height: 52,

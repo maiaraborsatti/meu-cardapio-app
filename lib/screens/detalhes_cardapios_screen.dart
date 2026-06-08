@@ -77,7 +77,7 @@ class _DetalhesCardapioScreenState
         return const Icon(Icons.coffee, color: AppColors.primaryGreen);
       case 'almoço':
         return const Icon(Icons.brunch_dining, color: AppColors.primaryGreen);
-      case 'jantar':
+      case 'janta':
         return const Icon(Icons.dinner_dining, color: AppColors.primaryGreen);
       default:
         return const Icon(Icons.restaurant, color: AppColors.primaryGreen);
@@ -178,7 +178,7 @@ class _DetalhesCardapioScreenState
 
   List<Widget> _buildSecoes() {
 
-    final ordem = ['café', 'almoço', 'jantar'];
+    final ordem = ['café', 'almoço', 'janta'];
 
     return ordem.where((ref) => agrupado.containsKey(ref)).map((refeicao) {
 
