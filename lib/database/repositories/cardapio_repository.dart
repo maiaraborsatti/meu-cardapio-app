@@ -44,7 +44,7 @@ class CardapioRepository {
     );
   }
 
-  // Deleta o cardápio inteiro (ON DELETE CASCADE)
+  // Deleta o cardápio inteiro (ON DELETE CASCADE não aplicado)
   Future<int> deletarCardapio(int id) async {
     final db = await _dbHelper.database;
     return await db.delete(

@@ -104,14 +104,14 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
 
                       onTap: () async {
 
-                        // pega instancia do storage
+                       
                         final prefs = await SharedPreferences.getInstance();
 
                         // salva o id do usuario selecionado
                         await prefs.setInt('usuario_logado_id', usuario.id!);
                            
                            if (!mounted) return;
-                        // navega normalmente
+                        
                         Navigator.pushNamedAndRemoveUntil(
                           context,
                           AppRoutes.menu,
@@ -130,7 +130,7 @@ class _UsuariosScreenState extends State<UsuariosScreen> {
 
                   Navigator.pushNamed(
                     context,
-                    AppRoutes.cadastroUsuario, // futuramente cadastroUsuario,
+                    AppRoutes.cadastroUsuario, 
                   );
                 },
 

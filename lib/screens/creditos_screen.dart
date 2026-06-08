@@ -11,7 +11,7 @@ class CreditosScreen extends StatelessWidget {
     
      final usuario = ModalRoute.of(context)!.settings.arguments as Usuario;
 
-    // 🎨 estilo padrão dos nomes (evita repetição)
+    
     const TextStyle nomeStyle = TextStyle(
       color: AppColors.white,
       fontSize: 22,
@@ -22,17 +22,17 @@ class CreditosScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryGreen,
 
       body: SafeArea(
-        child: Center( // 👈 centraliza a "caixa"
+        child: Center( 
           child: Container(
-            width: double.infinity, // 👈 ocupa toda largura
+            width: double.infinity, 
             padding: const EdgeInsets.symmetric(horizontal: 20),
 
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, // 👈 centraliza vertical
-              crossAxisAlignment: CrossAxisAlignment.center, // 👈 centraliza horizontal
+              mainAxisAlignment: MainAxisAlignment.center, 
+              crossAxisAlignment: CrossAxisAlignment.center, 
               children: [
 
-                // 🔝 TÍTULO
+               
                 const Text(
                   "Créditos",
                   textAlign: TextAlign.center,
@@ -45,7 +45,7 @@ class CreditosScreen extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                // 👥 NOMES
+                
                 const Text("Geovana Lopes", style: nomeStyle, textAlign: TextAlign.center),
                 const SizedBox(height: 8),
 
@@ -62,7 +62,7 @@ class CreditosScreen extends StatelessWidget {
 
                 const SizedBox(height: 60),
 
-                //LOGO CLICÁVEL
+               
                 GestureDetector(
                   onTap: () {
                     

@@ -6,7 +6,7 @@ import '../models/usuario.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
-// ================== TELA ==================
+// tela
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -22,7 +22,7 @@ class MenuScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // ================== HEADER ==================
+            // header
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
               child: Row(
@@ -73,8 +73,7 @@ class MenuScreen extends StatelessWidget {
                   ),
                   
 
-                  // menu icon
-                  // menu icon
+                  
                       InkWell(
                         onTap: () {
                           showDialog(
@@ -96,10 +95,10 @@ class MenuScreen extends StatelessWidget {
                                   TextButton(
                                     onPressed: () async {
 
-                                      // 🔥 pega o SharedPreferences
+                                      
                                       final prefs = await SharedPreferences.getInstance();
 
-                                      // 🔥 remove o usuário logado
+                                      //remove o usuário logado
                                       await prefs.remove('usuario_logado_id');
 
                                       if (!context.mounted) return;
@@ -133,7 +132,7 @@ class MenuScreen extends StatelessWidget {
               ),
             ),
 
-            // ================== CONTAINER BRANCO ==================
+            
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -148,7 +147,7 @@ class MenuScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
 
-                  // 👇 SCROLL AQUI
+                  
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -242,7 +241,7 @@ class MenuScreen extends StatelessWidget {
 }
 
 
-// ================== COMPONENTE CARD ==================
+//COMPONENTE CARD
 
 Widget _menuCard({
   required String title,

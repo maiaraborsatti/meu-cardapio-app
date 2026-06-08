@@ -51,7 +51,7 @@ class AlimentoCard extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          // TEXTO MAIS ORGANIZADO
+         
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +80,7 @@ class AlimentoCard extends StatelessWidget {
             ),
           ),
 
-          // BOTÃO MAIS DISCRETO
+         
           Container(
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.15),
